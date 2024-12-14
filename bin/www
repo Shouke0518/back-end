@@ -13,7 +13,7 @@ const WebSocket = require('ws');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000' || "https://back-end-cwng.onrender.com");
+var port = normalizePort(process.env.PORT || '3000' || "back-end-cwng.onrender.com");
 app.set('port', port);
 
 /**
