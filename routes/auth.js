@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const Test = require('../database/schemas/Test');
 const passport = require('passport');
 const User = require('../database/schemas/User');
 const GoogleUser = require('../database/schemas/GoogleUser');
@@ -153,6 +154,12 @@ const bruteforce = new Brute(store, {
     lifetime: 24 * 60 * 60,
 });
 const bruteForceMiddleware = process.env.BRUTEFORCE_SWITCH === 'true' ? bruteforce.prevent : (req, res, next) => next();
+
+router.post('/test', async (request, response) => {
+    const {name, price} = request.body;
+    const newTest = await Test.create({name, price});
+    newTest.save();
+});
 
 router.post('/login', bruteForceMiddleware, passport.authenticate('local'), (req, res) => {
     console.log('Logged In');
