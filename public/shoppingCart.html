@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美味不浪費</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div id="grocery-list">
+            <div v-for="item in groceries" :key="item.groceryName" class="grocery-item">
+                <h2>商品名稱: {{ item.groceryName }}</h2>
+                <img :src="getImageUrl(item.groceryName)" alt="商品圖片">
+                <p>店名: {{ item.storeName }}</p>
+                <p>折扣價: {{ item.discountedPrice }} 元</p>
+                <p>有效期至: {{ item.expirationDate }}</p>
+                <input type="checkbox" v-model="item.checked">
+                <button @click="removeItem(index)">刪除</button>
+            </div>
+        </div>
+        <div id="totalPrice">
+            <h2>總價: {{ totalPrice }}</h2>
+        </div>
+        <button @click="toHomePage()">繼續選購</button>
+        <button @click="toPayPage()">結帳</button>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                let groceries = JSON.parse(localStorage.getItem('cart')) || [];
+                groceries = groceries.map(item => ({ ...item, checked: true }));
+                return {
+                    groceries
+                }
+            },
+            computed: {
+                totalPrice() {
+                    return this.groceries
+                        .filter(item => item.checked)
+                        .reduce((acc, item) => acc + parseInt(item.discountedPrice), 0);
+                }
+            },
+            methods: {
+                toPayPage() {
+                    window.location.href = "payPage.html";
+                },
+                toHomePage() {
+                    window.location.href = "homePage.html";
+                },
+                removeItem(index) {
+                    this.groceries.splice(index, 1);
+                    localStorage.setItem('cart', JSON.stringify(this.groceries));
+                },
+                getImageUrl(groceryName) {
+                    const images = {
+                        '飯糰': 'images/onigiri.png',
+                        '麵包': 'images/bread.png',
+                        '漢堡': 'images/burger.png',
+                        '三明治': 'images/sandwich.png',
+                        '便當': 'images/bento.png',
+                    };
+                    return images[groceryName] || 'images/default.png';
+                },
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

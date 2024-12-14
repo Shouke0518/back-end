@@ -1,0 +1,60 @@
+//fakko created
+p, ROLE_ADMIN, /*, *
+
+p, ROLE_USER, /auth/*, read
+p, ROLE_USER, /, read
+p, ROLE_USER, /db/*, read
+p, ROLE_USER, /homePage.html, read
+p, ROLE_USER, /loginPage.html, read
+p, ROLE_USER, /loginPage.html, update
+p, ROLE_USER, /notAllowed.html, read
+p, ROLE_USER, /detailPage.html, read
+p, ROLE_USER, /addPage.html, read
+p, ROLE_USER, /storePage.html, read
+p, ROLE_USER, /postPage.html, read
+p, ROLE_USER, /payPage.html, read
+p, ROLE_USER, /registerPage.html, read
+p, ROLE_USER, /registerPage.html, updat
+p, ROLE_USER, /stylesheets/*, read
+p, ROLE_USER, /javascripts/*, read
+p, ROLE_USER, /images/*, read
+
+p, ROLE_USER, /*, write
+p, ROLE_USER, /*, update
+p, ROLE_USER, /*, delete
+p, ROLE_MERCHANT, /merchantPage.html, read
+p, ROLE_MERCHANT, /homePage.html, read
+p, ROLE_MERCHANT, /storePage.html, read
+p, ROLE_MERCHANT, /registerPage.html, read
+p, ROLE_MERCHANT, /stylesheets/*, read
+p, ROLE_MERCHANT, /javascripts/*, read
+p, ROLE_MERCHANT, /images/*, read
+p, ROLE_MERCHANT, /notAllowed.html, read
+
+p, ROLE_MERCHANT, /*, write
+p, ROLE_MERCHANT, /*, update
+p, ROLE_GUEST, /auth/*, read
+p, ROLE_GUEST, /db/*, read
+p, ROLE_GUEST, /auth/*, update
+p, ROLE_GUEST, /homePage.html, read
+p, ROLE_GUEST, /loginPage.html, read
+p, ROLE_GUEST, /notAllowed.html, read
+p, ROLE_GUEST, /loginPage.html, update
+p, ROLE_GUEST, /registerPage.html, read
+p, ROLE_GUEST, /registerPage.html, update
+p, ROLE_GUEST, /stylesheets/*, read
+p, ROLE_GUEST, /javascripts/*, read
+p, ROLE_GUEST, /images/*, read
+p, ROLE_GUEST, /error, read
+
+g, admin, ROLE_ADMIN
+g, fakko@gmail.com, ROLE_ADMIN
+g, user, ROLE_USER
+g, guest, ROLE_GUEST
+g, merchant, ROLE_MERCHANT
+
+//for front end
+p, ROLE_USER, /addPage, access
+p, ROLE_MERCHANT, /merchantPage, access
+
+

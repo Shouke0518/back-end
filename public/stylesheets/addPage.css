@@ -1,0 +1,70 @@
+/* stylesheets/addPage.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 350px;
+}
+
+h1 {
+  text-align: center;
+  color: #343a40;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.inputBox {
+  margin-bottom: 15px;
+}
+
+.inputBox input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  font-size: 16px;
+}
+
+.inputBox input:focus {
+  border-color: #80bdff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button.btn-outline-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+button.btn-outline-primary:hover {
+  background-color: #0056b3;
+}
+
+#map {
+  width: 100%;
+  height: 300px;
+  margin-top: 20px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美味不浪費</title>
+    <link rel="stylesheet" href="stylesheets/loginPage.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css">
+    <script src="/javascripts/registerPage.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form id="loginForm" onsubmit="handleRegisterForm(event)">
+            <h1>Register</h1>
+
+            <div class="inputBox">
+                <input type="text" placeholder="Email">
+            </div>
+            <div class="inputBox">
+                <input type="text" id="name" placeholder="Name">
+            </div>
+            <div class="inputBox">
+                <input type="text" id="phoneNumber" placeholder="PhoneNumber">
+            </div>
+            <div class="inputBox">
+                <input type="password" id="password" placeholder="Create Password">
+            </div>
+            <div class="inputBox">
+                <input type="password" id="comfirmPassword" placeholder="Comfirm Password">
+            </div>
+            <i class="bx bx-hide eye-icon" onclick="showPassword()"></i>
+            <div>
+                <input type="checkbox" id="isMerchant" name="isMerchant" />
+                <label for="isMerchant">我是商家</label>
+            </div>
+            <button type="submit" class="button">Register</button>
+
+            <div class="registerLink">
+                <p>Already have an account? <a href="loginPage.html">Login</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+
+
+</html>

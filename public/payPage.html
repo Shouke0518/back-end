@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美味不浪費</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+
+<body>
+    <div id="app">
+        <h1>結帳頁面</h1>
+
+        <div>
+            <h2>購買人資訊</h2>
+            <label>
+                姓名:
+                <input type="text" v-model="userInfo.name">
+            </label>
+            <label>
+                電話:
+                <input type="text" v-model="userInfo.phone">
+            </label>
+            <label v-if="deliveryOptions.deliveryType === 'delivery'">
+                地址:
+                <input type="text" v-model="userInfo.address">
+            </label>
+        </div>
+
+        <div>
+            <h2>購買商品</h2>
+            <div v-for="item in groceries" :key="item.groceryName" class="grocery-item">
+                <h3>商品名稱: {{ item.groceryName }}</h2>
+                    <img :src="getImageUrl(item.groceryName)" alt="商品圖片">
+                    <p>店名: {{ item.storeName }}</p>
+                    <p>折扣價: {{ item.discountedPrice }} 元</p>
+                    <p>有效期至: {{ item.expirationDate }}</p>
+            </div>
+            <p>總價: {{ totalPrice }} 元</p>
+        </div>
+
+        <div>
+            <h2>備註</h2>
+            <textarea v-model="orderNote" placeholder="請輸入備註"></textarea>
+        </div>
+
+        <div>
+            <h2>支付方式</h2>
+            <button @click="pay('Line Pay')">使用 Line Pay 付款</button>
+            <button @click="pay('Apple Pay')">使用 Apple Pay 付款</button>
+            <button @click="pay('現金')">使用 現金 付款</button>
+            <div>
+                <label>
+                    <input type="radio" v-model="deliveryOptions.deliveryType" value="delivery"> 外送
+                </label>
+                <label>
+                    <input type="radio" v-model="deliveryOptions.deliveryType" value="pickup"> 自取
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                let groceries = JSON.parse(localStorage.getItem('cart')) || [];
+                return {
+                    groceries,
+                    userInfo: {
+                        name: '',
+                        phone: '',
+                        address: ''
+                    },
+                    deliveryOptions: {
+                        deliveryType: ''
+                    },
+                    orderNote: ''
+                }
+            },
+            computed: {
+                totalPrice() {
+                    return this.groceries
+                        .reduce((acc, item) => acc + parseInt(item.discountedPrice), 0);
+                }
+            },
+            methods: {
+                pay(method) {
+                    if (this.deliveryOptions.deliveryType == '') {
+                        alert('請選擇自取或外送');
+                        return;
+                    }
+                    if (this.deliveryOptions.deliveryType == 'pickup') {
+                        alert('自取');
+                        alert(method + "扣款成功!");
+                    } else if (this.deliveryOptions.deliveryType == 'delivery') {
+                        alert(method + "扣款成功!");
+                        alert('外送');
+                    }
+                },
+                getImageUrl(groceryName) {
+                    const images = {
+                        '飯糰': 'images/onigiri.png',
+                        '麵包': 'images/bread.png',
+                        '漢堡': 'images/burger.png',
+                        '三明治': 'images/sandwich.png',
+                        '便當': 'images/bento.png',
+                    };
+                    return images[groceryName] || 'images/default.png';
+                },
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+
+</html>
