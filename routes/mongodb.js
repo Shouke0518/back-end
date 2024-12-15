@@ -117,7 +117,7 @@ router.delete('/items/user', async (req, res) => {
 
 router.post('/append', async (req, res) => {
     try {
-        const otherConnection = await mongoose.createConnection('mongodb+srv://shit141414:ob7WBFD7nZJWC50Q@informationswitch.eghn1.mongodb.net/?retryWrites=true&w=majority&appName=informationSwitch/mockStore');
+        const otherConnection = await mongoose.createConnection('mongodb+srv://shit141414:ob7WBFD7nZJWC50Q@informationswitch.eghn1.mongodb.net/mockStore?retryWrites=true&w=majority&appName=informationSwitch');
         const OtherDatabaseModel = otherConnection.model('Grocery', storeGrocery.schema);
         const discountedItems = await OtherDatabaseModel.find({ discount: true });
 
@@ -147,7 +147,7 @@ router.post('/append', async (req, res) => {
 router.get('/generate', async (req, res) => {
     try {
         let fakeData = generateFakeData();
-        const otherConnection = await mongoose.createConnection('mongodb+srv://shit141414:ob7WBFD7nZJWC50Q@informationswitch.eghn1.mongodb.net/?retryWrites=true&w=majority&appName=informationSwitch/mockStore');
+        const otherConnection = await mongoose.createConnection('mongodb+srv://shit141414:ob7WBFD7nZJWC50Q@informationswitch.eghn1.mongodb.net/mockStore?retryWrites=true&w=majority&appName=informationSwitch');
         const OtherDatabaseModel = otherConnection.model('Grocery', storeGrocery.schema);
         for (let i = 0; i < fakeData.length; i++) {
             await OtherDatabaseModel.create(fakeData[i]);
@@ -167,7 +167,7 @@ router.post('/store', async (req, res) => {
             return res.status(400).json({ error: "資料格式錯誤，應為 JSON 陣列。" });
         }
 
-        const otherConnection = await mongoose.createConnection('mongodb+srv://shit141414:ob7WBFD7nZJWC50Q@informationswitch.eghn1.mongodb.net/?retryWrites=true&w=majority&appName=informationSwitch/mockStore');
+        const otherConnection = await mongoose.createConnection('mongodb+srv://shit141414:ob7WBFD7nZJWC50Q@informationswitch.eghn1.mongodb.net/mockStore?retryWrites=true&w=majority&appName=informationSwitch');
         const OtherDatabaseModel = otherConnection.model('Grocery', storeGrocery.schema);
 
         // 將資料逐筆存入資料庫
