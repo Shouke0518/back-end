@@ -55,7 +55,7 @@ app.use(
     resave: true,
     saveUninitialized: true,
     store: MongoStore.create({
-      mongoUrl: 'mongodb+srv://shit141414:ob7WBFD7nZJWC50Q@informationswitch.eghn1.mongodb.net/?retryWrites=true&w=majority&appName=informationSwitch',
+      mongoUrl: 'mongodb+srv://shit141414:ob7WBFD7nZJWC50Q@informationswitch.eghn1.mongodb.net/undergraduateProject?retryWrites=true&w=majority&appName=informationSwitch',
     }),
   })
 );
