@@ -11,7 +11,7 @@ require('../strategies/github')
 require('../strategies/google')
 const router = Router();
 const crypto = require('crypto');
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:8080';
+const FRONTEND_URL = process.env.FRONTEND_URL || "https://front-end-c4wi.onrender.com" || 'http://localhost:8080';
 const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:3000';
 
 // 然後使用
