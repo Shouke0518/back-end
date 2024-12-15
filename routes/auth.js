@@ -14,9 +14,9 @@ const crypto = require('crypto');
 const FRONTEND_URL = process.env.FRONTEND_URL || "https://front-end-c4wi.onrender.com" || 'http://localhost:8080';
 const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:3000';
 
-// 然後使用
-res.redirect(`${FRONTEND_URL}/home`);
-const verificationLink = `${BACKEND_URL}/auth/verify?token=${token}`;
+// // 然後使用
+// res.redirect(`${FRONTEND_URL}/home`);
+// const verificationLink = `${BACKEND_URL}/auth/verify?token=${token}`;
 
 function generateStateParameter() {
     return crypto.randomBytes(16).toString('hex');
