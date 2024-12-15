@@ -11,6 +11,12 @@ require('../strategies/github')
 require('../strategies/google')
 const router = Router();
 const crypto = require('crypto');
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:8080';
+const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:3000';
+
+// 然後使用
+res.redirect(`${FRONTEND_URL}/home`);
+const verificationLink = `${BACKEND_URL}/auth/verify?token=${token}`;
 
 function generateStateParameter() {
     return crypto.randomBytes(16).toString('hex');
@@ -78,7 +84,7 @@ router.get('/google/callback', (req, res, next) => {
         console.log('Registering new Google user..');
     }
     const userEmail = req.user.emails[0].value;
-    res.redirect(`http://localhost:8080/home?userEmail=${encodeURIComponent(userEmail)}`);
+    res.redirect(`${FRONTEND_URL}/home?userEmail=${encodeURIComponent(userEmail)}`);
 });
 
 // ----------------github-------------------
@@ -142,7 +148,7 @@ router.get('/github/callback', (req, res, next) => {
     } else {
         console.log('Registering new GitHub user..');
     }
-    res.redirect('http://localhost:8080/home');
+    res.redirect(`${FRONTEND_URL}/home`);
 });
 
 // ----------------local-------------------
@@ -187,7 +193,7 @@ router.post('/register', async (request, response) => {
         const role = request.body.role;
         const token = crypto.randomBytes(32).toString('hex');
         await User.create({ password, email, name, phoneNumber, role, verificationToken: token, verified: false });
-        const verificationLink = `http://localhost:3000/auth/verify?token=${token}`;
+        const verificationLink = `${BACKEND_URL}/auth/verify?token=${token}`;
         send_mail(email, "會員驗證", `Please verify your account by clicking <a href="${verificationLink}">here</a>`);
         response.send(201);
     }
