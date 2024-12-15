@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose
-    .connect("mongodb+srv://shit141414:ob7WBFD7nZJWC50Q@informationswitch.eghn1.mongodb.net/?retryWrites=true&w=majority&appName=informationSwitch", {
+    .connect("mongodb+srv://shit141414:ob7WBFD7nZJWC50Q@informationswitch.eghn1.mongodb.net/?retryWrites=true&w=majority&appName=informationSwitch/undergraduateProject", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         ssl: true,
