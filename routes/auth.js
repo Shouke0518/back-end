@@ -167,9 +167,14 @@ router.post('/test', async (request, response) => {
     newTest.save();
 });
 
-router.post('/login', bruteForceMiddleware, passport.authenticate('local'), (req, res) => {
+// router.post('/login', bruteForceMiddleware, passport.authenticate('local'), (req, res) => {
+//     console.log('Logged In');
+//     console.log(req.session);
+//     res.sendStatus(200);
+// });
+// 先寫死
+router.post('/login', (req, res) => {
     console.log('Logged In');
-    console.log(req.session);
     res.sendStatus(200);
 });
 
