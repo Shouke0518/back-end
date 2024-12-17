@@ -169,6 +169,7 @@ router.post('/test', async (request, response) => {
 
 router.post('/login', bruteForceMiddleware, passport.authenticate('local'), (req, res) => {
     console.log('Logged In');
+    console.log(req.session);
     res.sendStatus(200);
 });
 

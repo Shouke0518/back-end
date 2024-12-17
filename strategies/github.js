@@ -8,7 +8,7 @@ passport.use(
         {
             clientID: process.env.GITHUB_CLIENT_ID,
             clientSecret: process.env.GITHUB_CLIENT_SECRET,
-            callbackURL: `${BACKEND_URL}/auth/github/callback`
+            callbackURL: `https://back-end-cwng.onrender.com/auth/github/callback`
         },
         function (accessToken, refreshToken, profile, done) {
             console.log(profile);
