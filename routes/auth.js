@@ -169,10 +169,17 @@ router.post('/test', async (request, response) => {
 
 router.post('/login', bruteForceMiddleware, passport.authenticate('local'), (req, res) => {
     console.log('Logged In');
+    console.log("User:", request.user);
     res.sendStatus(200);
 });
 
+router.get("/session", (request, response) => {
+    console.log(request.session);
+    response.send(request.session);
+});
+
 router.post("/logout", (request, response) => {
+    console.log(request.user);
     if (!request.user) return response.sendStatus(401);
     request.logout((err) => {
         if (err) return response.sendStatus(400);
