@@ -173,15 +173,11 @@ router.post('/login', bruteForceMiddleware, passport.authenticate('local'), (req
     res.sendStatus(200);
 });
 
-// router.post("/logout", (request, response) => {
-    
-//     if (!request.user) return response.sendStatus(401);
-//     request.logout((err) => {
-//         if (err) return response.sendStatus(400);
-//         response.send(200);
-//     });
-// });
-// 先寫死
+router.post("/print", (request, response) => {
+    console.log(process.env.IMGUR_CLIENT_ID);
+    response.send(200);
+});
+
 router.post("/logout", (request, response) => {
     response.send(200);
 });
