@@ -173,11 +173,6 @@ router.post('/login', bruteForceMiddleware, passport.authenticate('local'), (req
     res.sendStatus(200);
 });
 
-router.get("/print", (request, response) => {
-    console.log(process.env.IMGUR_CLIENT_ID);
-    response.send(200);
-});
-
 router.post("/logout", (request, response) => {
     response.send(200);
 });
